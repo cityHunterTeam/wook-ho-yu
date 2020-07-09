@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+
+a{
+	text-decoration: none;
+	color: black;
+}
+a:hover{
+	color: #FACC2E;
+	text-decoration: none;
+	cursor: pointer;
+}
+h3{
+	color:#2E9AFE;
+	
+}
