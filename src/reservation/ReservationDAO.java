@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -40,7 +41,7 @@ public class ReservationDAO {
 		public void addReserv(ReservationVO rm) {
 			try {
 				con = getConnection();
-				String query = "INSERT INTO reservation(depplacename,arrplacename,reser_date,adultcharge,depplandtime,seat,reser_email,reser_id,seat_count,traingradename) VALUES(?,?,now(),?,?,?,?,?,?,?)";
+				String query = "INSERT INTO reservation(depplacename,arrplacename,reser_date,adultcharge,depplandtime,seat,reser_email,reser_id,seat_count,traingradename,trainno) VALUES(?,?,now(),?,?,?,?,?,?,?,?)";
 				
 				System.out.println(query);
 				//PreparedStatement객체를 생성하면서 SQL문을 인자로 전달합니다.
@@ -55,7 +56,7 @@ public class ReservationDAO {
 				pstmt.setString(7, rm.getReser_id());
 				pstmt.setInt(8, rm.getCount());
 				pstmt.setString(9,rm.getTraingradename());
-			
+				pstmt.setInt(10,rm.getTrainno());
 				//SQL문을 실행합니다.
 				pstmt.executeUpdate();
 				
@@ -64,6 +65,34 @@ public class ReservationDAO {
 			}finally {
 				freeResource();
 			}
+		}
+		
+		
+		public String selectReserv(Timestamp depplandtime, int trainno) {
+			String seat_list = "";
+			try {
+				con = getConnection();
+				String query = "select * from reservation where depplandtime = ? and trainno = ?";
+				
+				System.out.println(query);
+				//PreparedStatement객체를 생성하면서 SQL문을 인자로 전달합니다.
+				pstmt = con.prepareStatement(query);
+				//값 셋팅
+				pstmt.setTimestamp(1, depplandtime);
+				pstmt.setInt(2, trainno);
+				
+				//SQL문을 실행합니다.
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					seat_list = rs.getString("seat");
+				}				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				freeResource();
+			}
+			return seat_list;
 		}
 
 }

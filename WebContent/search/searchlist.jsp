@@ -36,6 +36,7 @@ a{
 				<thead>
 					<tr height="10" align="center" bgcolor="lightgreen">
 						<td>기차종류</td>
+						<td>열차번호</td>
 						<td>출발일</td>
 						<td>출발역</td>
 						<td>도착역</td>
@@ -60,12 +61,14 @@ a{
 				<tr align="center">
 					<c:if test="${hash['adultcharge'] != 0}">
 					<td width="10%">${hash["traingradename"]}</td>
+					<td width="10%">${hash["trainno"]}</td>
 					<td width="10%"><fmt:formatDate value="${hash['depplandtime']}" pattern="yyyy-MM-dd kk:mm"/></td>
 					<td width="10%">${hash["depplacename"]}</td>
 					<td width="10%">${hash["arrplacename"]}</td>
 					<td width="10%">${hash["adultcharge"]}원</td>
 					<c:url var="url1" value="/res/seat.do">
-						<c:param name="traingradename" value="${hash['traingradename']}"/>					
+						<c:param name="traingradename" value="${hash['traingradename']}"/>	
+						<c:param name="trainno" value="${hash['trainno']}"/>				
 						<c:param name="adultcharge" value="${hash['adultcharge']}"/>
 						<c:param name="depplandtime" value="${hash['depplandtime']}"/>
 						<c:param name="depplacename" value="${hash['depplacename']}"/>

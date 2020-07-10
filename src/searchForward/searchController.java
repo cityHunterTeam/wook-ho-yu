@@ -149,7 +149,7 @@ public class searchController extends HttpServlet {
 	        			depplandtime = year+"-"+month+"-"+nal+" "+hour+":"+min+":"+sec;
 	        			java.sql.Timestamp time = java.sql.Timestamp.valueOf(depplandtime);
 	        			hash.put("depplandtime",time);
-	        			
+	        			hash.put("trainno",gt.getTagValue("trainno", eElement));
 	        			list.add(hash);
 	        		}
 	        	}

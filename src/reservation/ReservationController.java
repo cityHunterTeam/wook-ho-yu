@@ -54,19 +54,23 @@ public class ReservationController extends HttpServlet {
 		System.out.println("action:" + action);
 		if(action.equals("/seat.do")) {
 			String traingradename = request.getParameter("traingradename");
+			int trainno = Integer.parseInt(request.getParameter("trainno"));
 			int adultcharge = Integer.parseInt(request.getParameter("adultcharge"));			
 			String depplandtime1 = request.getParameter("depplandtime");
 			java.sql.Timestamp depplandtime = java.sql.Timestamp.valueOf(depplandtime1);
 			String depplacename = request.getParameter("depplacename");
 			String arrplacename = request.getParameter("arrplacename");
 			
-			ReservationVO vo = new ReservationVO(depplacename,arrplacename,traingradename,depplandtime,adultcharge);
+			ReservationVO vo = new ReservationVO(depplacename,arrplacename,traingradename,depplandtime,adultcharge,trainno);
+			ReservationDAO dao = new ReservationDAO();
+			String seat_list = dao.selectReserv(depplandtime, trainno);
 			request.setAttribute("vo", vo);
 			HttpSession session = request.getSession();
 			session.setAttribute("vo", vo);
 			String id = (String)session.getAttribute("id");
 			MemberDAO mdao = new MemberDAO();
 			MemberVO mvo = mdao.selectAll(id);
+			request.setAttribute("seat_list", seat_list);
 			request.setAttribute("mvo", mvo);
 			nextPage = "/reservation/reserStep1.jsp";
 			

@@ -14,18 +14,19 @@ public class ReservationVO {
 	String reser_email;
 	String reser_id;
 	int count;
-	
+	int trainno; 
 	
 
 	
 	public ReservationVO(String depplacename, String arrplacename, String traingradename, Timestamp depplandtime,
-			int adultcharge) {
+			int adultcharge,int trainno) {
 		super();
 		this.depplacename = depplacename;
 		this.arrplacename = arrplacename;
 		this.traingradename = traingradename;
 		this.depplandtime = depplandtime;
 		this.adultcharge = adultcharge;
+		this.trainno = trainno;
 	}
 	
 	public ReservationVO() {
@@ -93,6 +94,14 @@ public class ReservationVO {
 
 	public void setDepplandtime(Timestamp depplandtime) {
 		this.depplandtime = depplandtime;
+	}
+
+	public int getTrainno() {
+		return trainno;
+	}
+
+	public void setTrainno(int trainno) {
+		this.trainno = trainno;
 	}
 
 	public String getTraingradename() {
