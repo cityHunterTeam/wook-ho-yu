@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import com.mysql.cj.x.protobuf.MysqlxNotice.SessionVariableChanged;
 
 import Mypage.ReviewVO;
 import member.MemberVO;
+import reservation.ReservationVO;
 
 public class ReviewDAO {
 		Connection con;
@@ -251,6 +253,36 @@ public class ReviewDAO {
 					if(con!=null)try {con.close();}catch(SQLException ex) {}
 				}			
 			}
-			
-			
+
+	public List payMemberlist() {
+		List payMemberList = new ArrayList();
+		try {
+			con = getConnection();
+			String query = "select * from reservation";
+			System.out.println(query);
+			pstmt = con.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				int num = Integer.parseInt(rs.getString("num"));
+				String depplacename = rs.getString("depplacename");
+				String arrplacename = rs.getString("arrplacename");
+				Timestamp reser_date = rs.getTimestamp("reser_date");
+				int adultcharge = Integer.parseInt(rs.getString("adultcharge"));
+				Timestamp depplandtime = rs.getTimestamp("depplandtime");
+				String seat = rs.getString("seat");
+				String reser_email = rs.getString("reser_email");
+				String reser_id = rs.getString("reser_id");
+				int seat_count = Integer.parseInt(rs.getString("seat_count"));
+				String traingradename = rs.getString("traingradename");
+				int trainno = Integer.parseInt(rs.getString("trainno"));
+				ReservationVO rVO = new ReservationVO();
+				payMemberList.add(rVO);
+			}
+			freeResource();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return payMemberList;
+	}
+
 }

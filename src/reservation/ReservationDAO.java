@@ -5,11 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import board.BoardVO;
 import member.MemberVO;
 
 public class ReservationDAO {
@@ -68,8 +71,8 @@ public class ReservationDAO {
 		}
 		
 		
-		public String selectReserv(Timestamp depplandtime, int trainno) {
-			String seat_list = "";
+		public List<ReservationVO> selectReserv(Timestamp depplandtime, int trainno) {
+			List<ReservationVO> soldList = new ArrayList<ReservationVO>();
 			try {
 				con = getConnection();
 				String query = "select * from reservation where depplandtime = ? and trainno = ?";
@@ -84,15 +87,21 @@ public class ReservationDAO {
 				//SQL문을 실행합니다.
 				rs = pstmt.executeQuery();
 				
-				if(rs.next()) {
-					seat_list = rs.getString("seat");
-				}				
+				while(rs.next()) {
+					ReservationVO soldVo = new ReservationVO();
+					soldVo.setCount(rs.getInt("seat_count"));
+					soldVo.setDepplandtime(rs.getTimestamp("depplandtime"));
+					soldVo.setTrainno(rs.getInt("trainno"));
+					soldVo.setSeat(rs.getString("seat"));
+					
+					soldList.add(soldVo);
+				}
 			}catch(Exception e) {
 				e.printStackTrace();
 			}finally {
 				freeResource();
 			}
-			return seat_list;
+			return soldList;
 		}
 
 }

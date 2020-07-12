@@ -44,6 +44,7 @@ a {
 <title>글목록</title>
 </head>
 <body>
+
 	<h2 style="text-align: center">예약정보</h2><br><br>
 	<table class="table table-hover text-center" style="width:50%; margin:auto">
 		
@@ -76,16 +77,47 @@ a {
                 else {
                     $(":checkbox").removeAttr("disabled");
                 }
+                
+              <c:forEach var="soldvo" items="${soldList}">
+            	<c:forTokens var="soldSeat" items="${soldvo.seat}" delims=" ">
+    		
+    			var checked= document.getElementsByName("seatlist");
+    			for(var i = 0; i < 80; i++){
+    				if(checked[i].value =='${soldSeat}'){
+    					checked[i].disabled = true;
+    					console.log(checked[i].value);
+    				}
+    			}		
+    		
+    			</c:forTokens>
+            </c:forEach>
+
             });
              
             // 셀렉트박스에서 다른 인원수를 선택하면 초기화 시킴
             $("#person").change(function(){
                 $(":checkbox").removeAttr("checked");
                 $(":checkbox").removeAttr("disabled");
+                 
+                <c:forEach var="soldvo" items="${soldList}">
+                	<c:forTokens var="soldSeat" items="${soldvo.seat}" delims=" ">
+        		
+        			var checked= document.getElementsByName("seatlist");
+        			for(var i = 0; i < 80; i++){
+        				if(checked[i].value =='${soldSeat}'){
+        					checked[i].disabled = true;
+        					console.log(checked[i].value);
+        				}
+        			}		
+        		
+        			</c:forTokens>
+                </c:forEach>
+
+                
             });
         });
         
-     
+     	
        
 	
         
@@ -125,6 +157,11 @@ a {
             <td><label><input type="checkbox" name="seatlist" value="B${i}"/>B${i}</label></td>
         </c:forEach>    
         </tr>
+        
+        <tr>
+        <td colspan="20" style="height: 30px; text-align: center;">복도</td>
+        </tr>
+        
         <tr>
         <c:forEach var="i" begin="1" end="20">
             <td><label><input type="checkbox" name="seatlist" value="C${i}"/>C${i}</label></td>
@@ -146,7 +183,24 @@ a {
 	<button type="submit" class="btn btn-warning">결제진행</button>
 	</div>
  	
-</form>	
+</form>
+
+
+
+<c:forEach var="soldvo" items="${soldList}">
+	<c:forTokens var="soldSeat" items="${soldvo.seat}" delims=" ">
+		<script>
+			var checked= document.getElementsByName("seatlist");
+			for(var i = 0; i < 80; i++){
+				if(checked[i].value =='${soldSeat}'){
+					checked[i].disabled = true;
+					console.log(checked[i].value);
+				}
+			}		
+		</script>
+	</c:forTokens>
+</c:forEach>
+	
 </body>
 <jsp:include page="../inc/footer.jsp"/>
 </html>

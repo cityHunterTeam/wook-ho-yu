@@ -140,7 +140,7 @@
                             </div>
                             <div class="tab-pane fade" id="tricket" role="tabpanel" aria-labelledby="tricket-tab">
                                 <div class="booking_form">
-                                    <form action="#">
+                                    <form action="#"> 
                                         <div class="form-row">
                                             <div class="form_colum">
                                                 <select class="nc_select">

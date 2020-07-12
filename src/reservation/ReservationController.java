@@ -61,16 +61,22 @@ public class ReservationController extends HttpServlet {
 			String depplacename = request.getParameter("depplacename");
 			String arrplacename = request.getParameter("arrplacename");
 			
+			//예약좌석 조회)이때 기본키 
+			
+			
 			ReservationVO vo = new ReservationVO(depplacename,arrplacename,traingradename,depplandtime,adultcharge,trainno);
 			ReservationDAO dao = new ReservationDAO();
-			String seat_list = dao.selectReserv(depplandtime, trainno);
+			
+			List<ReservationVO> soldList = dao.selectReserv(depplandtime, trainno);
+	
+			
 			request.setAttribute("vo", vo);
 			HttpSession session = request.getSession();
 			session.setAttribute("vo", vo);
 			String id = (String)session.getAttribute("id");
 			MemberDAO mdao = new MemberDAO();
 			MemberVO mvo = mdao.selectAll(id);
-			request.setAttribute("seat_list", seat_list);
+			request.setAttribute("soldList", soldList);
 			request.setAttribute("mvo", mvo);
 			nextPage = "/reservation/reserStep1.jsp";
 			
@@ -105,7 +111,7 @@ public class ReservationController extends HttpServlet {
 			dao.addReserv(vo);
 			session.removeAttribute("vo");
 			//msg 스크립트 변수 
-			request.setAttribute("msg","결제가 완료되었습니다 .");
+			request.setAttribute("msg","결제가 완료되었습니다.");
 			nextPage = "/mem/index.do";
 		}
 
