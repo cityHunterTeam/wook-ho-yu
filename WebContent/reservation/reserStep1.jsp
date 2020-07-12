@@ -72,10 +72,12 @@ a {
                 // 셀렉트박스의 값과 체크박스중 체크된 갯수가 같을때, 다른 체크박스들을 disable 처리
                 if( cnt==$(":checkbox:checked").length ) {
                     $(":checkbox:not(:checked)").attr("disabled", "disabled");
+                    $("#count_sp").hide('fast');
                 }
                 // 체크된 갯수가 다르면 활성화 시킴
                 else {
                     $(":checkbox").removeAttr("disabled");
+                    $("#count_sp").show('fast');
                 }
                 
               <c:forEach var="soldvo" items="${soldList}">
@@ -98,7 +100,8 @@ a {
             $("#person").change(function(){
                 $(":checkbox").removeAttr("checked");
                 $(":checkbox").removeAttr("disabled");
-                 
+                $("#count_sp").show('fast');
+
                 <c:forEach var="soldvo" items="${soldList}">
                 	<c:forTokens var="soldSeat" items="${soldvo.seat}" delims=" ">
         		
@@ -139,10 +142,15 @@ a {
         <option value="7">7명</option>
         
     </select>
+    <br>
+    <br>
+    <span id="count_sp" style="text-align:center"> *선택한 인원수만큼 좌석을 선택해주세요</span>
+    
     </div>
 
     <br>
-    <br>
+    
+    
     <h2 style="text-align: center">좌석선택</h2><br><br>
     
     <table border="1" style="width:50%; margin:auto">

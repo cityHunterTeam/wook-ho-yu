@@ -86,17 +86,20 @@ public class ReservationController extends HttpServlet {
 			int count = Integer.parseInt(request.getParameter("person"));
 			String[] seatlist = request.getParameterValues("seatlist");
 			String seat = "";
-			for(int i = 0; i<seatlist.length; i++) {
-				seat += seatlist[i]+" ";
-			}
-			HttpSession session = request.getSession();
-			ReservationVO vo = (ReservationVO)session.getAttribute("vo");
-			vo.setCount(count); vo.setSeat(seat); vo.setReser_id(reser_id);
-			vo.setReser_email(reser_email); vo.setAdultcharge(vo.getAdultcharge() * count);
-			session.setAttribute("vo", vo);
-			request.setAttribute("reser_id", reser_id);
-			request.setAttribute("reser_email", reser_email);
-			nextPage = "/reservation/reserStep2.jsp";
+				for(int i = 0; i<seatlist.length; i++) {
+					seat += seatlist[i]+" ";
+				}
+				HttpSession session = request.getSession();
+				ReservationVO vo = (ReservationVO)session.getAttribute("vo");
+				vo.setCount(count); vo.setSeat(seat); vo.setReser_id(reser_id);
+				vo.setReser_email(reser_email); vo.setAdultcharge(vo.getAdultcharge() * count);
+				session.setAttribute("vo", vo);
+				request.setAttribute("reser_id", reser_id);
+				request.setAttribute("reser_email", reser_email);
+				nextPage = "/reservation/reserStep2.jsp";
+				request.setAttribute("msg","선택한 좌석수가 다릅니다.");
+				nextPage = "/mem/index.do";
+			
 		}else if(action.equals("/reserv2.do")) {
 			HttpSession session = request.getSession();
 			ReservationVO vo = (ReservationVO)session.getAttribute("vo");
