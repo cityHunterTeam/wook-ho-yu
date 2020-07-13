@@ -41,7 +41,7 @@ a{
 						<td>출발역</td>
 						<td>도착역</td>
 						<td>운임요금</td>
-						<td>에약하기</td>
+						<td>예약하기</td>
 					</tr>
 				</thead>
 				<tbody>

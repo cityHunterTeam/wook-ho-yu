@@ -109,11 +109,11 @@
                                         <a class="nav-link dropdown-toggle" href="./blog.jsp" id="navbarDropdown_1"
                                             role="button" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
-                                            pages
+                                            Mypage
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                            <a class="dropdown-item" href="./top_place.jsp">top place</a>
-                                            <a class="dropdown-item" href="./tour_details.jsp">tour details</a>
+                                            <a class="dropdown-item" href="${contextPath}/my/order.do">주문목록</a>
+                                            <a class="dropdown-item" href="./tour_details.jsp">취소목록</a>
                                             <a class="dropdown-item" href="../elements.jsp">Elements</a>
                                         </div>
                                     </li>

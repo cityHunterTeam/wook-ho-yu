@@ -97,8 +97,7 @@ public class ReservationController extends HttpServlet {
 				request.setAttribute("reser_id", reser_id);
 				request.setAttribute("reser_email", reser_email);
 				nextPage = "/reservation/reserStep2.jsp";
-				request.setAttribute("msg","선택한 좌석수가 다릅니다.");
-				nextPage = "/mem/index.do";
+				
 			
 		}else if(action.equals("/reserv2.do")) {
 			HttpSession session = request.getSession();

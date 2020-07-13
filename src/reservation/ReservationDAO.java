@@ -103,5 +103,37 @@ public class ReservationDAO {
 			}
 			return soldList;
 		}
+		
+		
+		public ReservationVO selectContent(int num) {
+			ReservationVO vo = new ReservationVO();
+			try {
+				con = getConnection();
+				String query = "select * from reservation where num = ?";
+				
+				System.out.println(query);
+				//PreparedStatement객체를 생성하면서 SQL문을 인자로 전달합니다.
+				pstmt = con.prepareStatement(query);
+				//값 셋팅
+				pstmt.setInt(1, num);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					vo.setNum(rs.getInt("num"));
+					vo.setDepplacename(rs.getString("depplacename"));
+					vo.setArrplacename(rs.getString("arrplacename"));
+					vo.setReser_date(rs.getTimestamp("reser_date"));
+					
+				}
+				
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				freeResource();
+			}
+			
+			return vo;
+		}
+		
 
 }
