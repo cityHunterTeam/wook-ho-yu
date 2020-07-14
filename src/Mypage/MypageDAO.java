@@ -76,7 +76,7 @@ public class MypageDAO {
 				vo.setSeat(rs.getString("seat"));
 				vo.setReser_email(rs.getString("reser_email"));
 				vo.setReser_id(rs.getString("reser_id"));
-				vo.setCount(rs.getInt("seat_count"));
+				vo.setSeat_count(rs.getInt("seat_count"));
 				vo.setTraingradename(rs.getString("traingradename"));
 				vo.setTrainno(rs.getInt("trainno"));				
 				 //BoardBean => ArrayList에 추가 				 
@@ -116,10 +116,37 @@ public class MypageDAO {
 		return count;	//검색한 전체 글 수 notice.jsp로 반환   
 	}
 	
+	public ReservationVO getOrder(int num) {
+		ReservationVO vo = new ReservationVO();
+		String sql = "";
+		try {
+			//DB연결 
+			con = getConnection();
+			sql = "select * from reservation where num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery(); //select문 실행 
+			
+			if(rs.next()) {
+				vo.setReser_id(rs.getString("reser_id"));
+				vo.setReser_email(rs.getString("reser_email"));
+				vo.setTraingradename(rs.getString("traingradename"));
+				vo.setTrainno(rs.getInt("trainno"));
+				vo.setDepplandtime(rs.getTimestamp("depplandtime"));
+				vo.setDepplacename(rs.getString("depplacename"));
+				vo.setArrplacename(rs.getString("arrplacename"));
+				vo.setAdultcharge(rs.getInt("adultcharge"));
+				vo.setSeat(rs.getString("seat"));
+			}
+		}catch(Exception e) {
+			System.out.println("getOrder메소드에서 예외발생 : "+e);
+		}finally {
+			freeResource();
+		}
+		return vo;
+	}
 	
-	//글목록 검색 메소드
-	//notice.jsp에서 호출하는 메소드로
-	//getBoardList(각페이지마다 맨위에 첫번쨰로 보여질 시작글번호, 한 페이지당 보여지는 글개수)를 전달받아...
-	//검색한 글정보(BoardBean)하나하나를 ArrayList에 담아.. 반환함.
+	
+	
 	
 }

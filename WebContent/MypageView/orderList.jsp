@@ -55,7 +55,7 @@ a{
 				<tbody>
 				
 		<c:if test="${articleList== null}">
-			<tr height="10" onclick="location.href='${contextPath}/my/content.do?num=${article.num}'">
+			<tr height="10" >
 				<td colspan="4">
 					<p align="center">
 						<b><span style="font-size:9pt;">결제내역이 없습니다.</span></b>
@@ -65,7 +65,7 @@ a{
 		</c:if>
 		<c:if test="${articleList != null}">
 			<c:forEach var="article" items="${articleList}">
-				<tr align="center">
+				<tr align="center" onclick="location.href='${contextPath}/my/content.do?num=${article.num}&pageNum=${pageNum}'">
 					<td width="5%">${article.traingradename}
 					<td width="5%">${article.depplacename}</td>
 					<td width="5%">${article.arrplacename}</td>

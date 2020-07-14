@@ -11,7 +11,7 @@
 <body>
 	<script type="text/javascript">
 		alert("수정되었습니다.");
-		location.href = "${contextPath}/not/noticeContent.do";
+		location.href = "${contextPath}/not/notice.do";
 	</script>
 
 	

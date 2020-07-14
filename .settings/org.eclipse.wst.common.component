@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="wook+ho+yu">
+    <wb-module deploy-name="wook+ho+yu+da">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="wook+ho+yu"/>
-        <property name="java-output-path" value="/wook+ho+yu/build/classes"/>
+        <property name="java-output-path" value="/wook+ho+yu+da/build/classes"/>
+        <property name="context-root" value="wook+ho+yu+da"/>
     </wb-module>
 </project-modules>

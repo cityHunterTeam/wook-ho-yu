@@ -12,8 +12,17 @@ public class ReservationVO {
 	int adultcharge;
 	String seat;
 	String reser_email;
+	
+	public int getSeat_count() {
+		return seat_count;
+	}
+
+	public void setSeat_count(int seat_count) {
+		this.seat_count = seat_count;
+	}
+
 	String reser_id;
-	int count;
+	int seat_count;
 	int trainno; 
 	
 
@@ -81,12 +90,7 @@ public class ReservationVO {
 	public void setReser_id(String reser_id) {
 		this.reser_id = reser_id;
 	}
-	public int getCount() {
-		return count;
-	}
-	public void setCount(int count) {
-		this.count = count;
-	}
+
 
 	public Timestamp getDepplandtime() {
 		return depplandtime;

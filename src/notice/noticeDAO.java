@@ -53,7 +53,7 @@ public void insertnotice(noticeVO n) {
 	}finally {
 		freeResource();	
 	}
-}//insertnotice�걹
+}//insertnotice끝
 public int getnoticeCount() {
 	int count = 0;
 	try {

@@ -107,14 +107,20 @@ public class MypageController extends HttpServlet {
 			request.setAttribute("endPage", endPage);
 			request.setAttribute("pageBlock", pageBlock);
 			request.setAttribute("pageCount",pageCount);
+			request.setAttribute("pageNum",pageNum);
 			
 			nextPage = "/MypageView/orderList.jsp";
 		}else if(action.equals("/content.do")) {
-			
+			int num = Integer.parseInt(request.getParameter("num"));
+			int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+			ReservationVO vo = new ReservationVO();
+			MypageDAO dao = new MypageDAO();
+			vo = dao.getOrder(num);
+			request.setAttribute("vo", vo);
+			request.setAttribute("num", num);
+			request.setAttribute("pageNum", pageNum);
+			nextPage = "/MypageView/orderContent.jsp";
 		}
-		
-					
-		
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 		dispatch.forward(request, response);
 	}//doHandle

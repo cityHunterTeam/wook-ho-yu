@@ -47,10 +47,7 @@
                     </div>
                     <div class="col-lg-6 col-sm-12 col-md-6">
                         <div class="sub_menu_social_icon">
-                            <a href="#"><i class="flaticon-facebook"></i></a>
-                            <a href="#"><i class="flaticon-twitter"></i></a>
-                            <a href="#"><i class="flaticon-skype"></i></a>
-                            <a href="#"><i class="flaticon-instagram"></i></a>
+                           
                             <c:if test="${empty sessionScope.id}">
                             <a href="${contextPath }/mem/login.do"><i class="">로그인</i></a>
                             <a href="${contextPath }/mem/join.do"><i class="">회원가입</i></a>                          
@@ -58,12 +55,12 @@
                             </c:if>
                             <c:if test="${not empty sessionScope.id }">
                             	<c:set var="id" value="${sessionScope.id }"/>
-                            <span><i class="flaticon-phone-call"></i>${id}님 환영합니다</a></span>
+                            <span><i ></i>${id}님 환영합니다😍</a></span>
                             </c:if>
                             <c:if test="${not empty sessionScope.id }">
-                              <a href="${contextPath }/mem/logout.do"><i class="">로그아웃</i></a>
-                              <a href="${contextPath }/mem/myCheck.do"><i class="">내정보</i></a>
-                              <a href="${contextPath }/not/notice.do"><i class="">고객센터</i></a>                         							
+                              <a href="${contextPath }/mem/logout.do"><i class="" style="margin-right:-20px; margin-left:10px">로그아웃|</i></a>
+                              <a href="${contextPath }/mem/myCheck.do"><i class="" style="margin-right:-20px;">내정보|</i></a>
+                              <a href="${contextPath }/not/notice.do"><i class="" >고객센터|</i></a>                         							
                             </c:if>
                         </div>
                     </div>
@@ -91,8 +88,8 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="${contextPath}/mypage/review.do">Review</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="./packages.jsp">packages</a>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="${contextPath}/to/tour.do">packages</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="./blog.jsp" id="navbarDropdown"
@@ -120,6 +117,17 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="${contextPath}/not/notice.do">Notice</a>
                                     </li>
+                                    
+                                    <c:set var="id" value="${sessionScope.id }"/>
+                                    <c:if test="${id.equals('admin')}">
+                                    <li class="nav-item dropdown">
+                                           <a class="nav-link" href="${contextPath}/adm/adminIndex.do" 
+                                            role="button"  aria-haspopup="true"
+                                            aria-expanded="false">
+                                           	관리자
+                                        </a>
+                                        </li>
+                                    </c:if>
                                 </ul>
                             </div>
                             <a href="#" class="btn_1 d-none d-lg-block">book now</a>

@@ -32,8 +32,8 @@
 			<div class="col-sm-1 w-100" style="padding-top: 92px">
 				<a href="${contextPath}/not/notice.do" class="btn btn-dark w-100 mb-1" >공지사항</a><br>
 				<a href="#" class="btn btn-dark w-100 mb-1">1:1 문의</a><br>
-				<a href="${contextPath}/not/question.do" class="btn btn-dark w-100 mb-1">자주 묻는 질문</a><br>
-				<a href="#" class="btn btn-dark w-100 mb-1">문의 게시판</a>
+				<a href="${contextPath}/not/faq.do" class="btn btn-dark w-100 mb-1">자주 묻는 질문</a><br>
+				<a href="${contextPath}/que/question.do" class="btn btn-dark w-100 mb-1">문의 게시판</a>
 			</div>
 			<div class="col-sm-6" align="center">
 				<br>

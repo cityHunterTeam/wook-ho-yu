@@ -40,7 +40,7 @@ import member.MemberVO;
 @WebServlet("/mypage/*")
 public class ReviewController extends HttpServlet {
 
-	private static String ARTICLE_IMAGE_REPO = "D:\\workspace_jsp\\wook+ho+yu\\WebContent\\upload";
+	private static String ARTICLE_IMAGE_REPO = "D:\\workspace_jsp\\wook+ho+yu+da\\WebContent\\upload";
 	
 	ReviewDAO reviewDAO;
 	ReviewVO vo;

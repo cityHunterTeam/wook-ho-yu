@@ -91,7 +91,7 @@ public class ReservationController extends HttpServlet {
 				}
 				HttpSession session = request.getSession();
 				ReservationVO vo = (ReservationVO)session.getAttribute("vo");
-				vo.setCount(count); vo.setSeat(seat); vo.setReser_id(reser_id);
+				vo.setSeat_count(count); vo.setSeat(seat); vo.setReser_id(reser_id);
 				vo.setReser_email(reser_email); vo.setAdultcharge(vo.getAdultcharge() * count);
 				session.setAttribute("vo", vo);
 				request.setAttribute("reser_id", reser_id);

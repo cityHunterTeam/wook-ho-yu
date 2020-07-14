@@ -23,8 +23,7 @@
 <c:set var="id" value="${sessionScope.id }"/>
  	<div class="container" style="margin-top: 10px;">
 		<div class="col-sm-12">						
-			<form action="${contextPath }/not/writePro.do" method="post">	
-			<input type="hidden" name="notice_num" value="${NoticeDTO.notice_num }">																			
+			<form action="${contextPath }/not/writePro.do" method="post">																				
 					<h2 align="center">공지사항 게시판 글 작성</h2>
 					<br>
 					<table class="table">
